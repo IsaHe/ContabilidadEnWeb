@@ -19,13 +19,13 @@ const guardarDia = (fecha, balance_transacciones, tienda_id) => {
   });
 }
 
-const guardarTransaccion = (id, concepto, importe, fecha, idTienda) => {
+const guardarTransaccion = (id, concepto, importe, fecha, tiendaId) => {
   fetch('http://localhost:3000/transacciones', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({id,concepto, importe, fecha, idTienda}),
+    body: JSON.stringify({id,concepto, importe, fecha, tiendaId}),
   })
   .then(response => response.json())
   .then(data => console.log(data.message))

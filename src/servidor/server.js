@@ -24,7 +24,7 @@ app.post('/dias', (req, res) => {
 });
 
 app.post('/transacciones', (req, res) => {
-  const {id, concepto, importe, fecha, tiendaId} = req.body;
+  const {id, concepto, importe, fecha, tiendaId } = req.body;
 
   db.run(`INSERT INTO Transacciones (id, concepto, valor, fecha, tienda_id) VALUES (?, ?, ?, ?, ?)`, [id, concepto, importe, fecha, tiendaId], function(err) {
     if (err) {
