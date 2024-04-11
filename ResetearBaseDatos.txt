@@ -1,0 +1,25 @@
+DROP TABLE IF EXISTS Tiendas;
+DROP TABLE IF EXISTS Dias;
+DROP TABLE IF EXISTS Transacciones;
+
+CREATE TABLE if not exists Tiendas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL,
+    balance_general DECIMAL(10, 2) NOT NULL
+);
+
+CREATE TABLE if not exists Dias (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    fecha DATE NOT NULL,
+    balance_transacciones DECIMAL(10, 2) NOT NULL,
+    tienda_id INT,
+    FOREIGN KEY (tienda_id) REFERENCES Tiendas(id)
+);
+
+CREATE TABLE if not exists Transacciones (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    concepto VARCHAR(255) NOT NULL,
+    valor DECIMAL(10, 2) NOT NULL,
+    dia_id INT,
+    FOREIGN KEY (dia_id) REFERENCES Dias(id)
+);
