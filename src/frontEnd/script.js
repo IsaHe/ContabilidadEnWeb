@@ -64,12 +64,12 @@ botonAgregarTransaccion.addEventListener("click", agregarTransaccion)
 botonGuardarDia.addEventListener("click", () => {
     const fecha = fechaIn.value;
     const tienda = tiendas.value;
-    const balance_transacciones = 0;
-    
-    guardarDia(fecha, balance_transacciones, tienda);
+    let balance_transacciones = 0;
+
     transacciones.forEach((transaccion) => {
         guardarTransaccion(transaccion.id ,transaccion.concepto.value, transaccion.valor.value, transaccion.fecha.value, tienda);
-        console.log(transaccion.id ,transaccion.concepto.value, transaccion.valor.value, transaccion.fecha.value, tienda);
+        balance_transacciones += parseFloat(transaccion.valor.value);
     });
+    guardarDia(fecha, balance_transacciones, tienda);
 });
     

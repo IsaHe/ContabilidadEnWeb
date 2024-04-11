@@ -12,6 +12,19 @@ let db = new sqlite3.Database('../datos/Contabilidad', (err) => {
   console.log('Connected to the database.');
 });
 
+app.get('/transacciones', (req, res) => {
+    const { inicio, fin, tiendaId } = req.query;
+
+    db.all(`SELECT * FROM Transacciones WHERE fecha BETWEEN ? AND ? AND tienda_id = ?`, [inicio, fin, tiendaId], (err, rows) => {
+        if (err) {
+            console.error(err.message);
+            res.status(500).send({ message: 'Error al obtener los datos' });
+        } else {
+            res.send(rows);
+        }
+    });
+});
+
 app.post('/dias', (req, res) => {
   const { fecha, balance_transacciones, tienda_id } = req.body;
 

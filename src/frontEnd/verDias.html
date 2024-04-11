@@ -2,9 +2,101 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Ver Dias</title>
+    <title>Ver Datos</title>
+    <style>
+        #inttroducirDatos {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        #mostrarDatos {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        #datos {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        #Total {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        #volverAindex {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        button {
+            font-size: 20px;
+        }
+
+        #tablaDatos {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #tablaDatos th {
+            border: 1px solid black;
+            padding: 8px;
+        }
+
+        #tablaDatos td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+
+        #headers {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 <body>
+
+    <div id="inttroducirDatos">
+        <label for="tienda">Escoge la tienda: </label>
+        <select id="tienda">
+            <option value="1">Francia</option>
+            <option value="2">Portal</option>
+            <option value="3">Rioja</option>
+        </select>
+
+        <br>
+
+        <label for="fechaInicio">Fecha inicio: </label>
+        <input type="date" id="fechaInicio">
+        <label for="fechaFin">Fecha fin: </label>
+        <input type="date" id="fechaFin">
+
+    </div>
+
+    <div id="mostrarDatos">
+        <button id="verDatos">Ver Datos</button>
+    </div>
+
+    <div id="datos">
+        <table id="tablaDatos">
+            <tr id="headers">
+                <th>Fecha</th>
+                <th>Concepto</th>
+                <th>Importe</th>
+            </tr>
+        </table>
+    </div>
+
+    <div id="Total"></div>
+
+    <div id="volverAindex">
+        <a href="index.html">
+            <button>Volver</button>
+        </a>
+    </div>
+
+    <script src="verDatos.js" type="text/javascript"></script>
 
 </body>
 </html>
