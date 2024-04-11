@@ -7,13 +7,30 @@
 <body>
 
 <div>
+    <div id="Header">Introduce los datos del dia:</div>
+
+    <div id="nombrTienda">
+        <label for="tienda">Escoge la tienda: </label>
+        <select id="tienda">
+            <option value="1">Francia</option>
+            <option value="2">Portal</option>
+            <option value="3">Rioja</option>
+        </select>
+    </div>
+
     <div id="fechaDia">
         <label for="fecha">Fecha: </label>
         <input type="date" id="fecha">
     </div>
+
     <div id="datosDia">
         <button id="agregarTransaccion">Agregar transaccion</button>
     </div>
+
+    <div>
+        <button id="guardarDia">Guardar Dia</button>
+    </div>
+
 </div>
 
 <script src="script.js" type="text/javascript"></script>

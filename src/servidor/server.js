@@ -1,19 +1,32 @@
 const express = require('express');
+const cors = require('cors');
 const sqlite3 = require('sqlite3').verbose();
 const app = express();
 app.use(express.json());
+app.use(cors());
 
-let db = new sqlite3.Database('./database.db', (err) => {
+let db = new sqlite3.Database('../datos/Contabilidad', (err) => {
   if (err) {
     console.error(err.message);
   }
   console.log('Connected to the database.');
 });
 
-app.post('/transacciones', (req, res) => {
-  const { concepto, importe, dia_id } = req.body;
+app.post('/dias', (req, res) => {
+  const { fecha, balance_transacciones, tienda_id } = req.body;
 
-  db.run(`INSERT INTO Transacciones (concepto, valor, dia_id) VALUES (?, ?, ?)`, [concepto, importe, dia_id], function(err) {
+  db.run(`INSERT INTO Dias (fecha, balance_transacciones, tienda_id) VALUES (?, ?, ?)`, [fecha, balance_transacciones, tienda_id], function(err) {
+    if (err) {
+      return console.log(err.message + ' ' + err.stack);
+    }
+    res.send({ message: 'Día guardado con éxito' });
+  });
+});
+
+app.post('/transacciones', (req, res) => {
+  const {id, concepto, importe, fecha, tiendaId} = req.body;
+
+  db.run(`INSERT INTO Transacciones (id, concepto, valor, fecha, tienda_id) VALUES (?, ?, ?, ?, ?)`, [id, concepto, importe, fecha, tiendaId], function(err) {
     if (err) {
       return console.log(err.message);
     }
@@ -23,4 +36,5 @@ app.post('/transacciones', (req, res) => {
 
 app.listen(3000, () => {
   console.log('Server is running on port 3000');
+  console.log('http://localhost:3000');
 });
