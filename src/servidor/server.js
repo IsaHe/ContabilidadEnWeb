@@ -25,6 +25,19 @@ app.get('/transacciones', (req, res) => {
     });
 });
 
+app.get('/dias', (req, res) => {
+    const { inicio, fin, tiendaId } = req.query;
+
+    db.all(`SELECT * FROM Dias WHERE fecha BETWEEN ? AND ? AND tienda_id = ?`, [inicio, fin, tiendaId], (err, rows) => {
+        if (err) {
+            console.error(err.message);
+            res.status(500).send({ message: 'Error al obtener los datos' });
+        } else {
+            res.send(rows);
+        }
+    });
+});
+
 app.post('/dias', (req, res) => {
   const { fecha, balance_transacciones, tienda_id } = req.body;
 

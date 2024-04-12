@@ -70,6 +70,7 @@ botonGuardarDia.addEventListener("click", () => {
         guardarTransaccion(transaccion.id ,transaccion.concepto.value, transaccion.valor.value, transaccion.fecha.value, tienda);
         balance_transacciones += parseFloat(transaccion.valor.value);
     });
+    balance_transacciones = parseFloat(balance_transacciones.toFixed(2));
     guardarDia(fecha, balance_transacciones, tienda);
 });
     
